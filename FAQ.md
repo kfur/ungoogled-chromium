@@ -45,7 +45,7 @@ You have 4 options to install an extension:
         "external_version": "1.0.0"
     }
     ```
-    If you restart Inox the extension should be loaded automatically.
+    If you restart Inox, the extension should be loaded automatically.
 
 * **Extension loader**
 
@@ -88,6 +88,8 @@ There are also ways to get Google's Flash player or other versions. See http://c
 ## How do I install Widevine CDM?
 
 These instructions are platform-specific.
+
+**WARNING**: For all platforms, it is recommended to download the Google Chrome version that has the same major version as ungoogled-chromium. Otherwise, there may be stability issues or crashes.
 
 ### Linux
 
