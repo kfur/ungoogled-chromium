@@ -3,27 +3,27 @@
 
 --- a/net/dns/host_resolver_impl.cc
 +++ b/net/dns/host_resolver_impl.cc
-@@ -19,6 +19,7 @@
+@@ -29,6 +29,7 @@
  #include "base/bind_helpers.h"
  #include "base/callback.h"
  #include "base/callback_helpers.h"
 +#include "base/command_line.h"
  #include "base/compiler_specific.h"
  #include "base/debug/debugger.h"
- #include "base/debug/leak_annotations.h"
-@@ -94,11 +95,6 @@ const unsigned kMinimumTTLSeconds = kCac
+ #include "base/debug/stack_trace.h"
+@@ -107,11 +108,6 @@ const unsigned kMinimumTTLSeconds = kCac
  // cached.
  const int kIPv6ProbePeriodMs = 1000;
  
--// Google DNS address used for IPv6 probes.
+-/* RIPE NCC k.root-servers.net. 2001:7fd::1 (anycasted) */
 -const uint8_t kIPv6ProbeAddress[] =
--    { 0x20, 0x01, 0x48, 0x60, 0x48, 0x60, 0x00, 0x00,
--      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x88, 0x88 };
+-    { 0x20, 0x01, 0x07, 0xfd, 0x00, 0x00, 0x00, 0x00,
+-      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01 };
 -
  // We use a separate histogram name for each platform to facilitate the
  // display of error codes by their symbolic name (since each platform has
  // different mappings).
-@@ -2378,7 +2374,7 @@ bool HostResolverImpl::IsIPv6Reachable(c
+@@ -2388,7 +2384,7 @@ bool HostResolverImpl::IsIPv6Reachable(c
    if ((base::TimeTicks::Now() - last_ipv6_probe_time_).InMilliseconds() >
        kIPv6ProbePeriodMs) {
      last_ipv6_probe_result_ =
